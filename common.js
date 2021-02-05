@@ -54,12 +54,12 @@ async function updateUser() {
 
 async function doRedirect(needsOffWaitlist) {
   if (!isLoggedIn()) {
-    location = '/waitlist.html';
+    location = '/login.html';
     return;
   }
   await updateUser();
   if (needsOffWaitlist && isWaitlisted()) {
-    location = '/waitlist.html';
+    location = '/';
     return;
   }
 }
