@@ -46,3 +46,25 @@ function setConfig(newConfig) {
     ...newConfig,
   });
 }
+
+async function updateUser() {
+  const response = await apiPost('me', {});
+  setConfig({user: response});
+}
+
+async function doRedirect(needsOffWaitlist) {
+  if (!isLoggedIn()) {
+    location = '/waitlist.html';
+    return;
+  }
+  await updateUser();
+  if (needsOffWaitlist && isWaitlisted()) {
+    location = '/waitlist.html';
+    return;
+  }
+}
+
+function isWaitlisted() {
+  if (getConfig().bypass) return false;
+  return getConfig().user && !getConfig().user.is_waitlisted;
+}
