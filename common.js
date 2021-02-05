@@ -1,13 +1,19 @@
 function getHeaders() {
-  return {
+  const headers = {
     'User-Agent': 'Clubhouse',
     'CH-Locale': 'en_US',
     'CH-AppVersion': '0.2.15',
     'CH-AppBuild': '269',
   };
+  if (isLoggedIn()) {
+    const auth = getConfig().auth;
+    headers['Authorization'] = 'Token ' + auth.auth_token;
+    headers['CH-UserId'] = auth.user_profile.user_id;
+  }
+  return headers;
 }
 function isLoggedIn() {
-  return localStorage.hipsterHouse && localStorage.hipsterHouse.auth;
+  return !!getConfig().auth;
 }
 
 function apiUrl(api) {
@@ -27,4 +33,16 @@ async function apiPost(api, body) {
   });
   const responseBody = await response.json();
   return responseBody;
+}
+
+function getConfig() {
+  if (!localStorage.hipsterHouse) return {};
+  return JSON.parse(localStorage.hipsterHouse);
+}
+
+function setConfig(newConfig) {
+  localStorage.hipsterHouse = JSON.stringify({
+    ...getConfig(),
+    ...newConfig,
+  });
 }

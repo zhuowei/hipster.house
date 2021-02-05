@@ -20,7 +20,8 @@ async function onSubmitCode(e) {
     phone_number: phoneNumberLast,
   };
   const response = await apiPost('complete_phone_number_auth', body);
-  // TODO(zhuowei)
+  setConfig({auth: response});
+  location = '/';
 }
 function loadHandler() {}
 window.onload = loadHandler;
