@@ -8,7 +8,11 @@ function handleError(e) {
 }
 
 async function loadHandler() {
-  if (await doRedirect(true)) {
+  if (await doRedirect()) {
+    return;
+  }
+  if (isWaitlisted()) {
+    document.getElementById('waitlist').style.display = '';
     return;
   }
   channelId = location.search.substring(1);
