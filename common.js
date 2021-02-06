@@ -35,6 +35,15 @@ async function apiPost(api, body) {
   return responseBody;
 }
 
+async function apiGet(api) {
+  const response = await fetch(apiUrl(api), {
+    method: 'GET',
+    headers: getHeaders(),
+  });
+  const responseBody = await response.json();
+  return responseBody;
+}
+
 function getConfig() {
   if (!localStorage.hipsterHouse) return {};
   return JSON.parse(localStorage.hipsterHouse);
