@@ -18,7 +18,8 @@ function isLoggedIn() {
 
 function apiUrl(api) {
   // return 'https://www.clubhouseapi.com/api/' + api;
-  return 'https://decisive-acoustic-rhythm.glitch.me/api/' + api;
+  // return 'https://decisive-acoustic-rhythm.glitch.me/api/' + api;
+  return 'https://api.hipster.house/api/' + api;
   return '/api/' + api;
 }
 
