@@ -1,14 +1,17 @@
 function getHeaders() {
   const headers = {
-    'User-Agent': 'Clubhouse',
+    'User-Agent': 'clubhouse/269 (iPhone; iOS 14.1; Scale/3.00)',
+    'CH-Languages': 'en-US',
     'CH-Locale': 'en_US',
     'CH-AppVersion': '0.2.15',
     'CH-AppBuild': '269',
+    'CH-UserID': '(null)',
+    'CH-DeviceId': getDeviceId(),
   };
   if (isLoggedIn()) {
     const auth = getConfig().auth;
     headers['Authorization'] = 'Token ' + auth.auth_token;
-    headers['CH-UserId'] = auth.user_profile.user_id;
+    headers['CH-UserID'] = auth.user_profile.user_id;
   }
   return headers;
 }
@@ -28,7 +31,7 @@ async function apiPost(api, body) {
     method: 'POST',
     body: JSON.stringify(body),
     headers: {
-      'content-type': 'application/json',
+      'content-type': 'application/json; charset=utf-8',
       ...getHeaders(),
     },
   });
@@ -77,4 +80,13 @@ async function doRedirect(needsOffWaitlist) {
 function isWaitlisted() {
   if (getConfig().bypass) return false;
   return getConfig().user && !getConfig().user.is_waitlisted;
+}
+
+function getDeviceId() {
+  let deviceId = getConfig().deviceId;
+  if (!deviceId) {
+    deviceId = uuidv4().toUpperCase();
+    setConfig({deviceId});
+  }
+  return deviceId;
 }
