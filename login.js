@@ -12,7 +12,14 @@ async function onSubmit(e) {
   const body = {
     phone_number: phoneNumberLast,
   };
-  const response = await apiPost('start_phone_number_auth', body);
+  let response = null;
+  try {
+    response = await apiPost('start_phone_number_auth', body);
+  } catch (e) {
+    alert(e);
+    console.log(e);
+    return;
+  }
   if (response && response.is_blocked) {
     alert('It seems your account is banned :(');
     return;
