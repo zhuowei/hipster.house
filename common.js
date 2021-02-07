@@ -16,7 +16,8 @@ function getHeaders() {
   return headers;
 }
 function isLoggedIn() {
-  return !!getConfig().auth;
+  const config = getConfig();
+  return config.auth && config.auth.auth_token;
 }
 
 function apiUrl(api) {

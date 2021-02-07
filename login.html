@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="bootstrap.min.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-<span class="navbar-text">Login</span>
+    <div class="container">
+        <span class="navbar-text">Login</span>
+    </div>
 </nav>
 <div class="container">
-<div><b>Warning!</b> If you don't have a Clubhouse account, don't login here; register on the real Clubhouse app first, or your number will be blocked.</div>
+<div>hipster.house: a third-party client for <a href="https://www.joinclubhouse.com">Clubhouse</a>.</div>
+<div>
+    Currently, you can create an account and reserve your username.<br>
+    Other features aren't supported yet.</div>
+<div>Enter your phone number to create or log into a Clubhouse account.</div>
+<div>
+    <b>Warning!</b><br>
+    Clubhouse sometimes bans accounts created in third-party clients on the first login.<br>
+    We <a href="https://github.com/zhuowei/ClubhouseAPI/issues/2">believe</a> we have worked around this; however, please create your account through the real Clubhouse app if possible.
+</div>
 <div id="phone-number-div">
 <form id="login-form" onsubmit="onSubmit(event)">
     <select class="form-select input-block" autocomplete="tel-country-code" name="countrycode" id="countrycode">
@@ -132,15 +144,16 @@
 </form>
 </div>
 <div id="phone-code-div" style="display: none">
+<div>Enter the verification code you received:</div>
 <form id="phone-code-form" onsubmit="onSubmitCode(event)">
     <input type="number" id="phone-code" class="form-control" placeholder="code">
     <input type="submit" value="Login" class="btn btn-primary">
 </form>
 </div>
-</div>
 <footer>
-hipster.house: a terrible Clubhouse client by <a href="https://twitter.com/zhuowei">@zhuowei.</a> <a href="https://github.com/zhuowei/hipster.house">Fork on Github</a>
+    hipster.house: a terrible Clubhouse client by <a href="https://twitter.com/zhuowei">@zhuowei.</a> <a href="https://github.com/zhuowei/hipster.house">Fork on Github</a>
 </footer>
+</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.1.0/uuidv4.min.js"></script>
 <script src="common.js"></script>
 <script src="login.js"></script>
