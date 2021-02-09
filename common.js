@@ -60,7 +60,8 @@ function setConfig(newConfig) {
 
 async function updateUser() {
   const response = await apiPost('me', {});
-  setConfig({user: response});
+  const waitlistResponse = await apiGet('check_waitlist_status');
+  setConfig({user: response, waitlist: waitlistResponse});
 }
 
 async function doRedirect(needsOffWaitlist) {
@@ -77,7 +78,7 @@ async function doRedirect(needsOffWaitlist) {
 
 function isWaitlisted() {
   if (getConfig().bypass) return false;
-  return getConfig().user && !getConfig().user.is_waitlisted;
+  return getConfig().waitlist && getConfig().waitlist.is_waitlisted;
 }
 
 function getDeviceId() {
