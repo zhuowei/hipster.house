@@ -21,7 +21,8 @@ async function loadHandler() {
   } else if (isWaitlisted()) {
     document.getElementById('waitlist').style.display = '';
   } else {
-    document.getElementById('personalappeal').style.display = '';
+    // TODO(zhuowei): fix this
+    // document.getElementById('personalappeal').style.display = '';
   }
   if (getConfig().user.user_profile.username) {
     document.getElementById('set-username').style.display = 'none';
