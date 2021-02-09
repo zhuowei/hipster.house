@@ -21,5 +21,7 @@ async function loadHandler() {
     document.getElementById('set-username').style.display = 'none';
     document.getElementById('waitlist-username').style.display = 'none';
   }
+  document.getElementById('yourprofile').href =
+      '/user.html?' + getConfig().user.user_profile.user_id;
 }
 window.onload = loadHandler;

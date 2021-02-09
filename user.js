@@ -9,6 +9,10 @@ async function loadHandler() {
   document.getElementById('user-name').textContent = p.name;
   document.getElementById('user-bio').textContent = p.bio;
   document.getElementById('user-img').src = p.photo_url;
+  document.getElementById('user-following').href =
+      '/get_following.html?' + userId;
+  document.getElementById('user-following').textContent =
+      p.num_following + ' following';
   const clubsContainer = document.getElementById('user-clubs');
   for (const club of p.clubs) {
     const clubLink = document.createElement('a');
