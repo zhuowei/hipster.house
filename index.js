@@ -23,7 +23,6 @@ async function loadHandler() {
   } else {
     document.getElementById('personalappeal').style.display = '';
   }
-  document.getElementById('personalappeal').style.display = '';
   if (getConfig().user.user_profile.username) {
     document.getElementById('set-username').style.display = 'none';
     document.getElementById('waitlist-username').style.display = 'none';
