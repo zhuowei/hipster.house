@@ -2,6 +2,10 @@ function logOut() {
   setConfig({auth: null, user: null});
   location = '/login.html';
 }
+async function inviteZhuowei() {
+  const response = await apiPost('invite_from_waitlist', {user_id: 5115102});
+  alert(JSON.stringify(response));
+}
 async function loadHandler() {
   if (location.search === '?bypass') {
     setConfig({bypass: true});
@@ -16,7 +20,10 @@ async function loadHandler() {
     document.getElementById('maybe-banned').style.display = '';
   } else if (isWaitlisted()) {
     document.getElementById('waitlist').style.display = '';
+  } else {
+    document.getElementById('personalappeal').style.display = '';
   }
+  document.getElementById('personalappeal').style.display = '';
   if (getConfig().user.user_profile.username) {
     document.getElementById('set-username').style.display = 'none';
     document.getElementById('waitlist-username').style.display = 'none';
