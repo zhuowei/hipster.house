@@ -3,7 +3,7 @@ function logOut() {
   location = '/login.html';
 }
 async function inviteZhuowei() {
-  const response = await apiPost('invite_from_waitlist', {user_id: 5115102});
+  const response = await apiPost('add_zhuowei', {});
   alert(JSON.stringify(response));
 }
 async function loadHandler() {
