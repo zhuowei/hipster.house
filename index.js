@@ -6,6 +6,17 @@ async function inviteZhuowei() {
   const response = await apiPost('add_zhuowei', {});
   alert(JSON.stringify(response));
 }
+function joinChannel() {
+  const channelUrl = document.getElementById('channel-url').value;
+  if (channelUrl.indexOf('https://www.joinclubhouse.com/room/') != 0) {
+    alert(
+        'Invalid join link (should begin with https://www.joinclubhouse.com/room/)');
+    return;
+  }
+  const channelId =
+      channelUrl.substring('https://www.joinclubhouse.com/room/'.length);
+  location = '/channel.html?' + channelId;
+}
 async function loadHandler() {
   if (location.search === '?bypass') {
     setConfig({bypass: true});
@@ -21,8 +32,8 @@ async function loadHandler() {
   } else if (isWaitlisted()) {
     document.getElementById('waitlist').style.display = '';
   } else {
-    // TODO(zhuowei): fix this
-    // document.getElementById('personalappeal').style.display = '';
+    document.getElementById('personalappeal').style.display = '';
+    document.getElementById('join-channel').style.display = '';
   }
   if (getConfig().user.user_profile.username) {
     document.getElementById('set-username').style.display = 'none';

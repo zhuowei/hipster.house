@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="bootstrap.min.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 <span class="navbar-text">Channel</span>
 </nav>
-<div style="display: none" id="waitlist">You're on Clubhouse's waitlist. You can't join any channels, but you can still browse for channels, topics, and users.</div>
-<div>Joining a channel is not supported yet.</div>
+<div style="display: none" id="waitlist">You're on Clubhouse's waitlist. You can't join any rooms, but you can still browse for rooms, topics, and users.</div>
+<div>Joining a room is experimental. You can currently only listen.</div>
+<div>Topic: <span id="channel-topic"></span></div>
+<div id="join-channel-div"><button onclick="joinChannel()" class="btn btn-primary">Join room</button></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.1.0/uuidv4.min.js"></script>
 <script src="https://download.agora.io/sdk/release/AgoraRTC_N-4.3.0.js"></script>
 <script src="common.js"></script>
 <script src="channel.js"></script>

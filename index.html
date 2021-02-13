@@ -21,6 +21,13 @@
     <div><a href="/get_channels.html" class="btn btn-primary">Current rooms</a></div>
     <div><a href="#" id="yourprofile" class="btn btn-primary">Your profile</a></div>
     <div><a href="#" onclick="logOut()" class="btn btn-secondary">Log out</a></div>
+    <div id="join-channel" style="display: none">
+        <div>Join room with invite link:</div>
+        <div class="form-group">
+            <input id="channel-url" class="form-control" placeholder="https://www.joinclubhouse.com/room/example">
+        </div>
+        <button onclick="joinChannel()" class="btn btn-primary">Join</button>
+    </div>
     <div id="personalappeal" style="display: none; background-color: #eeeeee;">
         <div><b>Please read</b>: a personal appeal from Zhuowei Zhang</div>
         <div>I am once again asking for a Clubhouse invite.</div>
