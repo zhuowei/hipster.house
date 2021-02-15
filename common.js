@@ -3,7 +3,7 @@ function getHeaders() {
     'User-Agent': 'clubhouse/269 (iPhone; iOS 14.1; Scale/3.00)',
     'CH-Languages': 'en-US',
     'CH-Locale': 'en_US',
-    'CH-AppVersion': '0.2.15',
+    'CH-AppVersion': '0.1.15',
     'CH-AppBuild': '269',
     'CH-UserID': '(null)',
     'CH-DeviceId': getDeviceId(),

@@ -32,8 +32,10 @@ async function loadHandler() {
   } else if (isWaitlisted()) {
     document.getElementById('waitlist').style.display = '';
   } else {
-    document.getElementById('personalappeal').style.display = '';
+    // TODO(zhuowei): nope still didn't work
+    // document.getElementById('personalappeal').style.display = '';
     document.getElementById('join-channel').style.display = '';
+    document.getElementById('you-can-join').style.display = '';
   }
   if (getConfig().user.user_profile.username) {
     document.getElementById('set-username').style.display = 'none';

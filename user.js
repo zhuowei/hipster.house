@@ -1,10 +1,29 @@
+var user;
+async function follow() {
+  const userId = parseInt(location.search.substring(1));
+  const api = user.is_follower ? 'unfollow' : 'follow';
+  const response = await apiPost(api, {user_id: userId});
+  await updateUser();
+  await refresh();
+}
+
 async function loadHandler() {
   if (await doRedirect()) {
     return;
   }
+  await refresh();
+}
+
+function isFollowing(userId) {
+  return getConfig().user && getConfig().user.following_ids &&
+      getConfig().user.following_ids.indexOf(userId) != -1;
+}
+
+async function refresh() {
   const userId = parseInt(location.search.substring(1));
   const response = await apiPost('get_profile', {user_id: userId});
   const p = response.user_profile;
+  user = p;
   document.getElementById('user-title').textContent = p.username;
   document.getElementById('user-name').textContent = p.name;
   document.getElementById('user-bio').textContent = p.bio;
@@ -14,6 +33,7 @@ async function loadHandler() {
   document.getElementById('user-following').textContent =
       p.num_following + ' following';
   const clubsContainer = document.getElementById('user-clubs');
+  clubsContainer.innerHTML = '';
   for (const club of p.clubs) {
     const clubLink = document.createElement('a');
     clubLink.href = '/club.html?' + club.club_id;
@@ -22,5 +42,9 @@ async function loadHandler() {
     clubDiv.appendChild(clubLink);
     clubsContainer.appendChild(clubDiv);
   }
+  document.getElementById('follow-unfollow').textContent =
+      isFollowing(userId) ? 'Unfollow' : 'Follow';
+  document.getElementById('follow-container').style.display =
+      isWaitlisted() ? 'none' : '';
 }
 window.onload = loadHandler;
