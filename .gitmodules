@@ -1,0 +1,4 @@
+[submodule "h2"]
+	path = h2
+	url = https://github.com/zhuowei/Hipster2.git
+	branch = build
