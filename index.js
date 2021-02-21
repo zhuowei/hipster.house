@@ -27,10 +27,10 @@ async function loadHandler() {
   if (await doRedirect()) {
     return;
   }
-  if (!getConfig().user.success) {
-    document.getElementById('maybe-banned').style.display = '';
-  } else if (isWaitlisted()) {
+  if (isWaitlisted()) {
     document.getElementById('waitlist').style.display = '';
+  } else if (!getConfig().user.success) {
+    document.getElementById('maybe-banned').style.display = '';
   } else {
     // TODO(zhuowei): nope still didn't work
     // document.getElementById('personalappeal').style.display = '';

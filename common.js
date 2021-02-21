@@ -59,8 +59,10 @@ function setConfig(newConfig) {
 }
 
 async function updateUser() {
-  const response = await apiPost('me', {});
   const waitlistResponse = await apiGet('check_waitlist_status');
+  const response = waitlistResponse && waitlistResponse.is_waitlisted ?
+      {} :
+      await apiPost('me', {});
   setConfig({user: response, waitlist: waitlistResponse});
 }
 
