@@ -1,6 +1,6 @@
 function logOut() {
   setConfig({auth: null, user: null});
-  location = '/login.html';
+  location = '/';
 }
 async function inviteZhuowei() {
   const response = await apiPost('add_zhuowei', {});
@@ -27,7 +27,14 @@ async function loadHandler() {
   if (await doRedirect()) {
     return;
   }
-  if (isWaitlisted()) {
+  if (!isLoggedIn()) {
+    document.getElementById('not-logged-in').style.display = '';
+    document.getElementById('login-button').style.display = '';
+    document.getElementById('log-out').style.display = 'none';
+    document.getElementById('set-username').style.display = 'none';
+    document.getElementById('waitlist-username').style.display = 'none';
+    document.getElementById('yourprofile').style.display = 'none';
+  } else if (isWaitlisted()) {
     document.getElementById('waitlist').style.display = '';
   } else if (!getConfig().user.success) {
     document.getElementById('maybe-banned').style.display = '';
@@ -36,12 +43,16 @@ async function loadHandler() {
     // document.getElementById('personalappeal').style.display = '';
     document.getElementById('join-channel').style.display = '';
     document.getElementById('you-can-join').style.display = '';
+    // document.getElementById('invite-user').style.display = '';
   }
-  if (getConfig().user.user_profile.username) {
+  if (getConfig().user && getConfig().user.user_profile &&
+      getConfig().user.user_profile.username) {
     document.getElementById('set-username').style.display = 'none';
     document.getElementById('waitlist-username').style.display = 'none';
   }
-  document.getElementById('yourprofile').href =
-      '/user.html?' + getConfig().user.user_profile.user_id;
+  if (getConfig().user && getConfig().user.user_profile) {
+    document.getElementById('yourprofile').href =
+        '/user.html?' + getConfig().user.user_profile.user_id;
+  }
 }
 window.onload = loadHandler;

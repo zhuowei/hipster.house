@@ -16,27 +16,22 @@
     <div style="display: none" id="waitlist" class="alert alert-secondary">You're on Clubhouse's waitlist. You can still <span id="waitlist-username">set your username and </span>browse for rooms, topics, and users.</div>
     <div>Welcome to hipster.house, a third party client for Clubhouse.</div>
     <div id="you-can-join" style="display: none;">Currently, you can browse content, follow users and clubs, and join rooms as a listener.</div>
+    <div style="display: none" id="not-logged-in" class="alert alert-secondary">You're not logged in. You can still browse for rooms, topics, and users.<br>
+    Log in with your phone number to reserve your username, and if you have an invite, join rooms as a listener.</div>
+    <div id="login-button" style="display: none"><a href="/login.html" class="btn btn-secondary">Log in</a></div>
     <div><a href="/update_username.html" class="btn btn-primary" id="set-username">Set username</a></div>
     <div><a href="/get_all_topics.html" class="btn btn-primary">All topics</a></div>
     <div><a href="/get_channels.html" class="btn btn-primary">Current rooms</a></div>
     <div><a href="/h2/search/user" class="btn btn-primary">Search</a></div>
     <div><a href="#" id="yourprofile" class="btn btn-primary">Your profile</a></div>
-    <div><a href="#" onclick="logOut()" class="btn btn-secondary">Log out</a></div>
+    <div id="invite-user" style="display: none"><a href="/h2/invite" class="btn btn-primary">Invite a user</a></div>
+    <div id="log-out"><a href="#" onclick="logOut()" class="btn btn-secondary">Log out</a></div>
     <div id="join-channel" style="display: none">
         <div>Join room with invite link:</div>
         <div class="form-group">
             <input id="channel-url" class="form-control" placeholder="https://www.joinclubhouse.com/room/example">
         </div>
         <button onclick="joinChannel()" class="btn btn-primary">Join</button>
-    </div>
-    <div id="personalappeal" style="display: none; background-color: #eeeeee;">
-        <div><b>Please read</b>: a personal appeal from Zhuowei Zhang</div>
-        <div>I am once again asking for a Clubhouse invite.</div>
-        <div>Your invite will help me implement audio streaming support in this client.</div>
-        <div>This uses the <a href="https://www.socialmediaexaminer.com/clubhouse-app-how-to-get-started/">"Wave" side-door invites</a>, which should work even if you don't have any invites left.</div>
-        <div>After you press the button below, you should get a <b>notification</b> in Clubhouse asking you to add me. Please choose <b>"Let them in"</b>.</div>
-        <div>Thank you so much.</div>
-        <div>Click <a href="#" class="btn btn-primary" onclick="inviteZhuowei()">Invite</a> to invite me.</div>
     </div>
     <footer>
         hipster.house: a terrible Clubhouse client by <a href="https://twitter.com/zhuowei">@zhuowei.</a> <a href="https://github.com/zhuowei/hipster.house">Fork on Github</a>

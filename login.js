@@ -14,7 +14,8 @@ async function onSubmit(e) {
   };
   let response = null;
   try {
-    response = await apiPost('start_phone_number_auth', body);
+    response = await apiPost(
+        'start_phone_number_auth', body, {disableGuestMode: true});
   } catch (e) {
     alert(e);
     console.log(e);
@@ -39,7 +40,8 @@ async function onSubmitCode(e) {
     verification_code: code,
     phone_number: phoneNumberLast,
   };
-  const response = await apiPost('complete_phone_number_auth', body);
+  const response = await apiPost(
+      'complete_phone_number_auth', body, {disableGuestMode: true});
   if (!response.success) {
     alert('Failed to login: ' + response.error_message)
     return;
