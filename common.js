@@ -77,6 +77,10 @@ async function updateUser() {
 
 async function doRedirect(needsOffWaitlist) {
   if (!isLoggedIn()) {
+    // TODO(zhuowei): guest mode
+    location = '/login.html';
+  }
+  if (!isLoggedIn()) {
     if (needsOffWaitlist) {
       location = '/';
       return;

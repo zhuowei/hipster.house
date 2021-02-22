@@ -34,8 +34,13 @@ async function loadHandler() {
     document.getElementById('set-username').style.display = 'none';
     document.getElementById('waitlist-username').style.display = 'none';
     document.getElementById('yourprofile').style.display = 'none';
+    document.getElementById('alltopics').style.display = 'none';
+    document.getElementById('searchbutton').style.display = 'none';
   } else if (isWaitlisted()) {
     document.getElementById('waitlist').style.display = '';
+    document.getElementById('alltopics').style.display = 'none';
+    document.getElementById('searchbutton').style.display = 'none';
+    document.getElementById('yourprofile').style.display = 'none';
   } else if (!getConfig().user.success) {
     document.getElementById('maybe-banned').style.display = '';
   } else {
